@@ -113,6 +113,11 @@ wishId:any=null
       this.pageSize = res.metadata.limit;
 this.currentPage = res.metadata.currentPage;
 this.total = res.results;
+
+
+
+
+this.wishId =res.data
 if (localStorage.getItem("heart") !==null) {
   this.wishId = localStorage.getItem('heart')
 }
@@ -149,7 +154,7 @@ if (localStorage.getItem("heart") !==null) {
   addWishList(id:string){
     this._WishlistService.addWishList(id).subscribe({
       next:(res)=>{
-        
+
         this._ToastrService.success(res.message,res.status)
         this.wishId=res.data
         localStorage.setItem('heart',this.wishId.toString())

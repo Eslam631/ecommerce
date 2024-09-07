@@ -19,7 +19,7 @@ export class WishlistComponent implements OnInit {
         next: (res) =>{
 this.wishListProducts=res.data
 console.log(this.wishListProducts)
-localStorage.setItem("heart", this.wishListProducts.toString())
+// localStorage.setItem("heart", this.wishListProducts.toString())
         }
         ,
         error: (error) => {console.error(error)}

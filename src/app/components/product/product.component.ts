@@ -68,6 +68,8 @@ implements OnInit, OnDestroy {
         this.pageSize = res.metadata.limit;
   this.currentPage = res.metadata.currentPage;
   this.total = res.results;
+  this.wishId =res.data
+
   if (localStorage.getItem("heart") !==null) {
     this.wishId = localStorage.getItem('heart')
   }
