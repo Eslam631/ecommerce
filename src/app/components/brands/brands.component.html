@@ -1,0 +1,16 @@
+
+<section class="my-4">
+  <h3 class="text-center text-main">Categories Products</h3>
+  <div class="row row-gap-md-5 d-flex justify-content-center">
+    @for (brand of getBrandsProduct; track $index) {
+    <div class="col-md-4 ">
+      <div class="product ">
+        <img [src]="brand.image" class="w-100" height="400px" [alt]="brand.name">
+<h5 class="text-center h3 text-main">{{brand.name}}</h5>
+
+<h6 class="text-center">{{brand.slug}}</h6>
+
+      </div>
+    </div>}
+  </div>
+</section>

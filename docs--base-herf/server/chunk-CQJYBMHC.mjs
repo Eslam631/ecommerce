@@ -1,0 +1,2 @@
+import './polyfills.server.mjs';
+import{Pb as a,aa as i,pb as o,qb as s,rb as r}from"./chunk-A4XH3RZS.mjs";import"./chunk-VVCT4QZE.mjs";var d=(()=>{let e=class e{};e.\u0275fac=function(n){return new(n||e)},e.\u0275cmp=i({type:e,selectors:[["app-notfound"]],standalone:!0,features:[a],decls:2,vars:0,consts:[[1,"d-flex","justify-content-center","align-items-center"],["src","./assets/images/error.svg","alt","",1,"w-50"]],template:function(n,m){n&1&&(o(0,"div",0),r(1,"img",1),s())}});let t=e;return t})();export{d as NotfoundComponent};

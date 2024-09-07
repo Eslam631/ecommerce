@@ -1,0 +1,33 @@
+<section class=" my-4 ">
+  <h1 class="h3">Wish List </h1>
+  <div class="row  ">
+  @for (wish of wishListProducts; track wish._id) {
+
+<div class="col-md-2 ">
+  <div class="product  ">
+    <i (click)="removeItem(wish._id)" class="fa-solid fa-heart fa-xl" style="color: #f00000;"></i>
+
+    <img [src]="wish.imageCover" class="w-100"  [alt]="wish.title">
+    <h3 class="small text-main">{{wish.category.name}}</h3>
+    <h4 class="h6"> {{wish.title}} </h4>
+    <div class="d-flex justify-content-between align-items-center">
+      <span>{{wish.price|currency:"EGP" }}</span>
+      <div>
+        @for (num of [1,2,3,4,5].slice(0,wish.ratingsAverage); track $index) {<span><i
+            class="fas fa-star rating-color"></i></span>}
+
+        @if (wish.ratingsAverage % 1 !== 0) {
+        <span><i class="fas fa-star-half-stroke rating-color"></i></span>
+        }
+
+        <span class="text-muted">{{wish.ratingsAverage}}</span>
+      </div>
+
+    </div></div>
+</div>
+
+
+
+  }
+</div>
+</section>

@@ -1,0 +1,53 @@
+<section class="bg-main-light w-75 mx-auto rounded-4 shadow">
+  <h1 class="text-center text-main">shippingAddress</h1>
+  <form [formGroup]="ordres"  >
+    <div class="my-2">
+      <label for="detalies">Detalies:</label>
+      <textarea formControlName="details" class="form-control" id="detalies"></textarea>
+      @if(ordres.get('details')?.errors && (ordres.get('details')?.touched ||ordres.get('details')?.dirty)
+
+){
+      <div class="alert alert-danger w-50">
+@if(ordres.get('details')?.getError('required')){
+        <p class="m-0">details is required</p>}
+
+
+      </div>}
+
+    </div>
+    <div  class="my-2">
+      <label for="phone">Phone</label>
+      <input formControlName="phone" type="tel" class="form-control" id="phone">
+      @if(ordres.get('phone')?.errors && (ordres.get('phone')?.touched ||ordres.get('phone')?.dirty)
+
+      ){
+            <div class="alert alert-danger w-50">
+      @if(ordres.get('phone')?.getError('required')){
+              <p class="m-0">phone is required</p>}
+
+              @else if(ordres.get('details')?.getError('pattern')){
+                <p class="m-0">Enter Valid details</p>}
+
+              </div>
+          }
+
+    </div>
+    <div  class="my-2">
+      <label for="city">City</label>
+      <input formControlName="city" type="tel" class="form-control" id="city">
+      @if(ordres.get('city')?.errors && (ordres.get('city')?.touched ||ordres.get('city')?.dirty)
+
+      ){
+            <div class="alert alert-danger w-50">
+      @if(ordres.get('city')?.getError('required')){
+              <p class="m-0">city is required</p>}
+
+
+            </div>}
+    </div>
+    <div class="d-flex justify-content-center gap-3">
+    <button [disabled]="ordres.invalid" (click)="orderSumbit()" type="submit" class="btn btn-main ">Check Out</button>
+    <button [disabled]="ordres.invalid" (click)="cashPay()" type="submit" class="btn btn-main ">Cash Order</button></div>
+  </form>
+
+</section>

@@ -1,0 +1,125 @@
+<section class="my-2">
+  <div class="row g-0">
+    <div class="col-md-10 ">
+      <div>
+        <owl-carousel-o [options]="customOptionsMain">
+          <ng-template carouselSlide><img src="./assets/images/03310d60-23f5-445c-8f9b-cbe45b5313c2.gif" height="300px" class="w-100"
+              alt=""></ng-template>
+          <ng-template carouselSlide><img src="./assets/images/13b7341d-4e10-4db1-b59e-1146dc7b7937.avif" height="300px" class="w-100"
+              alt=""></ng-template>
+          <ng-template carouselSlide><img src="./assets/images/7484d5fb-6dac-49a9-aac2-0be00a226d55.gif" height="300px" class="w-100"
+              alt=""></ng-template>
+          <ng-template carouselSlide><img src="./assets/images/7b0d996e-8c78-47e9-92b0-b097bfcac95f.avif" height="300px" class="w-100"
+              alt=""></ng-template>
+        </owl-carousel-o>
+
+      </div>
+
+    </div>
+    <div class="col-md-2">
+      <div><img src="./assets/images/ar_dk_eg-hero-01-hp.1724575243.7241375.avif" alt="" height="150" class="w-100">
+        <img height="150px" class="w-100" src="./assets/images/ar_dk_eg-hero-01-hp.1724661158.7442114.avif" alt="">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- categories -->
+<section class="my-2">
+  <h2>Popular Categories</h2>
+
+  <owl-carousel-o [options]="customOptionsCat">
+    @for (cat of categorieslist; track cat._id) {
+    <ng-template carouselSlide>
+      <div >
+        <img [routerLink]="['/details',cat._id]" [src]="cat.image" height="250px" [alt]="cat.name" class="w-100">
+        <h3 class="text-main h6">{{cat.name}}</h3>
+
+      </div>
+
+
+    </ng-template>
+    }
+
+
+  </owl-carousel-o>
+</section>
+
+
+
+
+<!-- product -->
+<section>
+  <h2>Popular Products:</h2>
+
+
+  <div class="row">
+
+    @for (product of productsList.slice(0,12) | paginate
+    : {
+        id: 'productPaginate',
+        itemsPerPage: pageSize,
+        currentPage: currentPage,
+        totalItems: total
+      }
+  |search:text; track product.id) {
+    <div class="col-md-2 p-2">
+      <div class="product p-2 ">
+        <span>
+          @if (wishId.includes(product.id)) {
+            <i  class="fa-solid fa-heart fa-xl" style="color: #f00000;"></i>
+         }
+          @else{
+            <i (click)="addWishList(product.id)" class="fa-regular fa-heart text-main fa-xl"></i>
+          }
+        </span>
+
+        <div [routerLink]="['/details',product.id]">
+          <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+          <h3 class="small text-main">{{product.category.name}}</h3>
+          <h4 class="h6"> {{product.title.split(" ",2).join(" ")}} </h4>
+          <div class="d-flex justify-content-between align-items-center">
+            <span>{{product.price | currency}}EGP </span>
+            <div>
+              @for (num of [1,2,3,4,5].slice(0,product.ratingsAverage); track $index) {<span><i
+                  class="fas fa-star rating-color"></i></span>}
+
+              @if (product.ratingsAverage % 1 !== 0) {
+              <span><i class="fas fa-star-half-stroke rating-color"></i></span>
+              }
+
+              <span class="text-muted">{{product.ratingsAverage}}</span>
+            </div>
+
+          </div>
+        </div>
+        <button class="btn-main w-100" (click)="addCart(product.id)">Add To Card</button>
+      </div>
+    </div>
+    }
+
+
+  </div>
+  <div class="d-flex justify-content-center align-items-center mt-4">
+    <pagination-controls
+      id="productPaginate"
+      (pageChange)="pageChanged($event)"
+      (pageBoundsCorrection)="pageChanged($event)"
+      [maxSize]="9"
+      [directionLinks]="true"
+      [autoHide]="true"
+      [responsive]="true"
+      previousLabel="Previous"
+      nextLabel="Next"
+      screenReaderPaginationLabel="Pagination"
+      screenReaderPageLabel="page"
+      screenReaderCurrentLabel="You're on page"
+    >
+    </pagination-controls>
+    </div>
+</section>

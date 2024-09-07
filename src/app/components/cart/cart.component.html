@@ -1,0 +1,41 @@
+<section class="my-5 p-4 bg-main-light rounded-4 shadow w-75 mx-auto">
+  @if (numItem!==0) {
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="text-center">ShopCart</h2>
+    <button class="btn btn-sm btn-outline-danger" (click)="clearFormCard()">ClearAll</button>
+  </div>
+  <p class="text-main">TotalPrice:{{cartDetalies.totalCartPrice | currency:'GBP'}}</p>
+  @for (item of cartDetalies.products; track item.product.id) {
+  <div class="row mb-1 border-bottom">
+    <div class="col-md-1 ">
+      <div>
+        <img [src]='item.product.imageCover' class="w-100" [alt]="item.product.title">
+      </div>
+    </div>
+    <div class="col-md-11 d-flex align-items-center justify-content-between">
+      <div>
+        <h3 class="h5">{{item.product.title}}</h3>
+        <p class="text-main m-0">Price:{{item.price|currency:'GBP'}}</p>
+        <span class="text-danger cursor-pointer  " (click)="removeItem(item.product.id)"><i
+            class="fa-solid fa-trash"></i> Delete</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="text-main cursor-pointer" (click)="updateCount(item.product.id,item.count+1)"><i
+            class="fa-solid fa-circle-plus fa-2xl"></i></span>
+        <span class="fs-5 fw-bold">{{item.count}}</span>
+        <span class="text-main cursor-pointer" (click)="updateCount(item.product.id,item.count-1)"><i
+            class="fa-solid fa-circle-minus fa-2xl"></i></span>
+      </div>
+    </div>
+  </div>
+  }
+
+  <button [routerLink]="['/order',cartDetalies._id]" class="btn btn-main">Orders</button>
+  }
+  @else {
+  <div class="d-flex justify-content-center"> <img class="w-50"
+      src="./assets/images/png-transparent-shopping-cart-grocery-store-shopping-basket-shopping-centre-shopping-bags-trolleys-material.png"
+      alt=""></div>
+
+  }
+</section>
