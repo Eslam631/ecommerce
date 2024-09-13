@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 productsList:Iproduct[]=[];
 getAllProductSub!:Subscription
+getAllCatogriesSub!:Subscription
 categorieslist:Icategories[]=[]
 text:string="";
 wishId:any=null
@@ -94,7 +95,7 @@ wishId:any=null
 
 
 
-    this._CategoriesService.getCatogeries().subscribe({
+   this.getAllCatogriesSub= this._CategoriesService.getCatogeries().subscribe({
       next: (res) => {
      this.categorieslist= res.data
 
@@ -135,6 +136,7 @@ if (localStorage.getItem("heart") !==null) {
 
   ngOnDestroy():void{
     this.getAllProductSub?.unsubscribe()
+    this.getAllCatogriesSub?.unsubscribe()
 
   }
 
