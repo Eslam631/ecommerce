@@ -33,6 +33,7 @@ console.log(this.wishListProducts)
         this._WishlistService.getProductItem().subscribe({
           next: (res) =>{
   this.wishListProducts=res.data
+  console.log(res.data)
   console.log(this.wishListProducts)
           }
           ,

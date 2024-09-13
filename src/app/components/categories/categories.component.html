@@ -3,7 +3,7 @@
   <div class="row row-gap-md-5 d-flex justify-content-center">
     @for (cat of getCatogriesProduct; track $index) {
     <div class="col-md-4 ">
-      <div class="product ">
+      <div class="product p-5 ">
         <img [src]="cat.image" class="w-100" height="400px" [alt]="cat.name">
 <h5 class="text-center h3 text-main">{{cat.name}}</h5>
 

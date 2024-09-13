@@ -1,10 +1,10 @@
-<section class=" my-4 ">
+@if (wishListProducts.length!==0) {<section class=" my-4 ">
   <h1 class="h3">Wish List </h1>
   <div class="row  ">
   @for (wish of wishListProducts; track wish._id) {
 
 <div class="col-md-2 ">
-  <div class="product  ">
+  <div class="product p-2 ">
     <i (click)="removeItem(wish._id)" class="fa-solid fa-heart fa-xl" style="color: #f00000;"></i>
 
     <img [src]="wish.imageCover" class="w-100"  [alt]="wish.title">
@@ -31,3 +31,12 @@
   }
 </div>
 </section>
+}
+@else{
+  <div class="d-flex justify-content-center ">
+  <img src="./assets/images/flat,750x,075,f-pad,750x1000,f8f8f8.jpg" class="w-50" alt="">
+</div>
+}
+
+
+
