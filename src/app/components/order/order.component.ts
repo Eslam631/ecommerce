@@ -14,7 +14,7 @@ import { CartService } from '../../core/services/cart.service';
 export class OrderComponent implements OnInit {
  ordres:FormGroup= new FormGroup({
    details:new FormControl(null,[Validators.required]),
-  phone:new FormControl(null,[Validators.required, Validators.pattern(/^\w{6,}$/)]),
+  phone:new FormControl(null,[Validators.required, Validators.pattern(/^01[0125][0-9]{8}$/)]),
   city:new FormControl(null,[Validators.required])
 
   })
@@ -42,12 +42,12 @@ private readonly _CartService=inject(CartService)
 
    orderSumbit():void{
 
-    console.log(this.ordres.value)
+
 
 
       this._OrdersService.checkOut(this.cartId,this.ordres.value).subscribe({
         next: (res) => {
-          console.log(res)
+console.log(res)
           if(res.status='success'){
 
             window.open(res.session.url,'_self')
@@ -56,7 +56,7 @@ private readonly _CartService=inject(CartService)
           }
         },
         error: (err) => {
-          console.log(err)
+
         }
       })
 

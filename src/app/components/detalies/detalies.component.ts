@@ -74,6 +74,7 @@ this.productDetailes=res.data
       next:(res)=>{
         console.log(res);
         this._ToastrService.success(res.message,res.status)
+        this._CartService.cardNumber.next(res.numOfCartItems)
       },
       error:(err)=>{
         console.log(err)

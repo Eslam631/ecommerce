@@ -25,8 +25,8 @@
       @if(ordres.get('phone')?.getError('required')){
               <p class="m-0">phone is required</p>}
 
-              @else if(ordres.get('details')?.getError('pattern')){
-                <p class="m-0">Enter Valid details</p>}
+              @else if(ordres.get('phone')?.getError('pattern')){
+                <p class="m-0">Enter Valid phone</p>}
 
               </div>
           }
