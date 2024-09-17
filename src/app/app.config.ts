@@ -1,5 +1,5 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
-import { provideRouter, withHashLocation, withViewTransitions } from '@angular/router';
+import { provideRouter, withHashLocation, withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 import { routes } from './app.routes';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
@@ -14,7 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes,withHashLocation(), withViewTransitions()),
+  providers: [provideRouter(routes,withHashLocation(),withInMemoryScrolling({scrollPositionRestoration:'enabled'}), withViewTransitions()),
   provideClientHydration(),
   provideHttpClient(withFetch(),withInterceptors([headerInterceptor,erroesInterceptor,loadingInterceptor,])),
 provideAnimations(),
